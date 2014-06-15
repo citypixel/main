@@ -18,7 +18,6 @@
 <body>
 {if $css_valaszto}{$css_valaszto}{/if}
 {if $slider}{$slider_x}{/if}
-
    <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
    <script type="text/javascript" src="slider/js/rhinoslider-1.05.min.js"></script>
    <script type="text/javascript" src="slider/js/mousewheel.js"></script>
