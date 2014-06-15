@@ -641,22 +641,3 @@ h3{
    display: none;
    clear: both;
 }
-
-.csoport_termekek{
-   margin: 10px 0px 10px 0px;
-}
-
-.csoport_termekek span{
-   margin-right: 10px;
-}
-
-.csoport_termekek a{
-   margin: 0px 10px 0px 0px;
-   border-right: 1px solid #3f3f3f;
-   padding: 0px 10px 0px 0px;
-   text-align: center;
-}
-
-.csoport_termekek a:nth-last-child(1){
-   border-right: 0px solid #3f3f3f !important;
-}
