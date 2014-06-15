@@ -1,0 +1,61 @@
+<script type="text/javascript" src="tinymce/tinymce_mod.js"></script>
+	<form method="post" action="?tartalom=szovegszerk&valaszt={$cikkx->sorszam}&lang={$cikkx->nyelv}" name="szoveg" class="admin_form">
+		<div class="a_form_fej">Szövegszerkesztés <input type="submit" value="Mentés" class="a_form_mentes" /></div>
+		<div style="width: 600px; float: left; text-align: left; margin: 20px 0px 0px 20px;">
+			<a href="#" onclick="divdisp_onx('admin_cikkadatlap');" id="a_cikk_adatlap">ADATLAP</a>
+			<a href="#" onclick="divdisp_onx('admin_cikkszoveg');" id="a_cikk_szoveg">SZÖVEG</a>
+		</div>
+		<div id="admin_cikkadatlap">
+		<table class="a_form_beldiv">
+			<tr><td>Cím:</td><td><input name="cim" type="text" value="{$cikkx->cim}" /><br style="clear: both;"/></td></tr>
+			<tr><td><input name="sorszam" type="text" value="{$cikkx->sorszam}" size="2" style="display:none;" /></td></tr>
+			<tr><td>Menünév:</td><td><input name="menunev" type="text" value="{$cikkx->menunev}" /></td></tr>
+			<!--
+			<tr><td>Kelt:</td><td><input name="kelt" type="text" value="{$cikkx->kelt}" /><br style="clear: both;"/></td></tr>
+            <tr><td>Megjelenés:</td><td><input name="megjelenes" type="text" value="{$cikkx->megjelenes}" /><br style="clear: both;"/></td></tr>
+            <tr><td>Esemény (tól):</td><td><input name="esemeny" type="text" value="{$cikkx->esemeny}" /><br style="clear: both;"/></td></tr>
+            <tr><td>Esemény (ig):</td><td><input name="esemeny_ig" type="text" value="{$cikkx->esemeny_ig}" /><br style="clear: both;"/></td></tr>
+            -->
+			<tr><td>PHP file:</td><td><input name="php_file" type="text" value="{$cikkx->php_file}" /><br style="clear: both;"/></td></tr>
+            <tr><td>Hivatkozás:</td><td><input name="hivatkozas" type="text" value="{$cikkx->hivatkozas}" /><br style="clear: both;"/></td></tr>
+            <tr><td>Sorrend:</td><td><input name="sorrend" type="text" value="{$cikkx->sorrend}" onkeyup="numerikusCheck(szoveg.sorrend)" /><br style="clear: both;"/></td></tr>
+            <tr><td>Nyelv:</td>
+				<td>
+				<select name="cikk_nyelv">
+					<option {if $cikkx->nyelv eq 'hu'}selected="selected"{/if}{if $cikkx->nyelv eq ''}selected="selected"{/if} value="hu">hu</option>
+					<option {if $cikkx->nyelv eq 'en'}selected="selected"{/if} value="en">en</option>
+					<option {if $cikkx->nyelv eq 'ro'}selected="selected"{/if} value="ro">ro</option>
+				</select>
+				</td>
+			</tr>
+			<td>Magyar megfelelője:</td>
+			<td>
+				<select name="cikkszam">
+				 {$magyar_option}
+				</select>
+			</td>
+			</tr>
+            
+			<tr><td>Menü elem:</td><td><input name="check_menu" type="checkbox" {if $cikkx->menufent eq '1'}checked="checked"{/if}/></td></tr>
+			<!--
+            <tr><td>Hír:</td><td><input name="check_hir" type="checkbox" {$cikkhir_check}/></td></tr>
+            <tr><td>Kiemelt:</td><td><input name="check_kiemelt" type="checkbox" {$cikkkiemelt_check}/></td></tr>
+			-->
+            <tr><td>Aktív:</td><td><input name="check_aktiv" type="checkbox" {if $cikkx->archiv eq '0'}checked="checked"{/if}/></td></tr>
+			<tr><td>Végleges törlés:</td><td><input name="check_torles" type="checkbox" onclick="megerosites_x({$cikkx->sorszam}, 'szoveg')" /></td></tr>
+		</table>
+		</div>
+		
+		<div id="admin_cikkszoveg" style="display: none;">
+		<div class="a_form_beldiv">
+			<!--
+			<p style="font-size: 14px; font-weight: bold; text-align: left;">Bevezető</p>
+			<textarea name="bevezeto" style="width:570px; height:200px;">{$cikkx->bevezeto}</textarea>
+			<br style="clear:both;" />
+			-->
+			<p style="font-size: 14px; font-weight: bold; text-align: left;">Tartalom</p>
+			<textarea name="content" style="width:690px; height:550px; background-color: #fff;">{$cikkx->tartalom}</textarea>
+			<br style="clear:both;" />
+		</div>
+		</div>
+	</form>

@@ -1,0 +1,36 @@
+<div>
+	<form method="post" action="?tartalom=szovegszerk" name="szoveg" class="admin_form">
+		<div class="a_form_fej">Cikkszerkesztő
+		   
+		</div>
+		{$lapszamsor}
+        <div style="width: 630px; height: 20px; color: #444444; font-weight: bold; font-size: 12px; margin: 0px auto 0px auto;">
+			<span style="width: 26px;">&nbsp;</span>
+			<span style="width: 320px; text-align: center;">cím</span>
+			<span style="width: 50px; text-align: center;">id</span>
+			<span style="width: 50px; text-align: center;">aktív</span>
+            <span style="width: 50px; text-align: center;">nyelv</span>
+			<span style="width: 50px; text-align: center;">sorrend</span>
+		</div>
+		
+		{section name=obj loop=$obj_array}
+		{assign var=sor value=$obj_array[obj]}
+		<a href="?tartalom=szovegszerk&valaszt={$sor->sorszam}" class="cedula_admintermeklista" {$sor->sorszin}>
+			<span style="width: 26px;">{$sor->sor}</span>
+			<span style="width: 320px; text-align: left;">{$sor->cim}</span>
+			<span style="width: 50px; text-align: center;">{$sor->sorszam}</span>
+			<span style="width: 50px; text-align: center;">{if $sor->archiv eq 0}x{/if}</span>
+			<span style="width: 50px; text-align: center;">{$sor->nyelv}</span>
+			<span style="width: 50px; text-align: center;">{$sor->sorrend}</span>
+		</a>
+		{/section}
+		
+		
+		<div style="float:left; height: 40px; margin: 16px 0px 6px 36px;">
+			Új szöveg címe:<input name="ujcim" type="text" value="" />
+			<input type="submit" value="Létrehoz" />
+		</div>
+		<br style="clear: both;" />
+		</div>
+	</form>
+</div>

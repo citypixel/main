@@ -1,0 +1,8 @@
+RewriteEngine on
+#not file
+RewriteCond %{REQUEST_FILENAME} !-f
+#not directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ /metripond/index.php?menu=$1 [NC,QSA,L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ /metripond/index.php?menu=$1&almenu=$2 [NC,QSA,L]

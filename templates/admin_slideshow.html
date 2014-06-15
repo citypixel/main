@@ -1,0 +1,39 @@
+<div>
+	<form method="post" action="" name="szoveg" enctype="multipart/form-data" class="admin_form">
+		<div class="a_form_fej">Slideshow szerkesztés<input type="submit" name="submit" value="Mentés" class="a_form_mentes" /></div>
+		
+		{section name=obj loop=$slide_array}
+		{assign var=sor value=$slide_array[obj]}
+		<div style="width: 600px;" class="uj_form">
+			<img src="slider/{$sor->slide}" style="width: 600px; margin: 30px 0px 10px 0px;" />
+			<input type="hidden" name="sorszam_{$sor->sorszam}" value="{$sor->sorszam}" />
+			<label>magyar cím:</label><input type="text" name="focim_hu_{$sor->sorszam}" value="{$sor->focim_hu}" />
+			<!--
+			<label>angol cím:</label><input type="text" name="focim_en_{$sor->sorszam}" value="{$sor->focim_en}" />
+			<label>német cím:</label><input type="text" name="focim_de_{$sor->sorszam}" value="{$sor->focim_de}" />
+			<label>magyar alcím:</label><input type="text" name="leiras_hu_{$sor->sorszam}" value="{$sor->leiras_hu}" />
+			<label>angol alcím:</label><input type="text" name="leiras_en_{$sor->sorszam}" value="{$sor->leiras_en}" />
+			<label>német alcím:</label><input type="text" name="leiras_de_{$sor->sorszam}" value="{$sor->leiras_de}" />
+			-->
+			<label>link:</label><input type="text" name="link_{$sor->sorszam}" value="{$sor->link}" />
+			<label>sorrend:</label><input type="text" name="sorrend_{$sor->sorszam}" value="{$sor->sorrend}" />
+			<!--
+			<label>profil</label>
+			<select name="profil_{$sor->sorszam}">
+					<option {if $sor->profil eq 'cnc'}selected="selected"{/if}{if $sor->profil eq ''}selected="selected"{/if} value="cnc">cnc</option>
+					<option {if $sor->profil eq 'felépítmény'}selected="selected"{/if} value="felépítmény">felépítmény</option>
+			</select>
+			-->
+			<label>aktív:</label><input type="checkbox" name="aktiv_{$sor->sorszam}" {if $sor->aktiv == 1}checked="checked"{/if} />
+			<label>törlés:</label><input type="checkbox" name="torol_{$sor->sorszam}" />
+		</div>
+		{/section}
+		
+		<div style="float:left; height: 40px; margin: 16px 0px 6px 36px;">
+			Új kép feltöltése:<input name="file" type="file" size="30" accept="image/*" maxlength="150" /><br style="clear:both;" />
+			<input type="submit" name="upload" value="Feltölt" />
+		</div>
+		<br style="clear: both;" />
+		
+	</form>
+</div>
